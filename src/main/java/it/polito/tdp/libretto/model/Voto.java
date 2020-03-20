@@ -14,12 +14,13 @@ public class Voto {
     private String corso; // Nome del corso di cui si è tenuto l'esame
     private int voto; // Voto ottenuto
     private LocalDate data; // Data dell'esame
-    
+
     /**
      * Costruisce un nuovo Voto
+     * 
      * @param corso nome del corso superato
-     * @param voto valore del voto acquisito
-     * @param data data di superamento dell'esame
+     * @param voto  valore del voto acquisito
+     * @param data  data di superamento dell'esame
      */
     public Voto(String corso, int voto, LocalDate data) {
         super();
@@ -57,6 +58,34 @@ public class Voto {
         return corso + ": " + voto + " (" + data + ")";
     }
 
-    
-    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((corso == null) ? 0 : corso.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Voto other = (Voto) obj;
+        if (corso == null) {
+            if (other.corso != null) {
+                return false;
+            }
+        } else if (!corso.equals(other.corso)) {
+            return false;
+        }
+        return true;
+    }
+
 }
